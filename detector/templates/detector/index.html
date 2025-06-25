@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fire Detection Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>🔥 Fire Detection</h2>
+            <ul>
+                <li><strong>Detected Logs</strong></li>
+                <li><a href="{% url 'reset_logs' %}" class="reset-btn">Reset Logs</a></li>
+            </ul>
+            <div class="logs">
+                {% for log in logs %}
+                    <div class="log-entry">
+                        <p>🔥 {{ log.detected_at }}</p>
+                        <small>Duration: {{ log.duration }}s</small>
+                    </div>
+                {% empty %}
+                    <p>No logs yet.</p>
+                {% endfor %}
+            </div>
+        </aside>
+
+        <main class="content">
+            <h1>Live Fire Feed</h1>
+            <div class="video-container">
+                <img src="{% url 'video_feed' %}" alt="Live Video" />
+            </div>
+        </main>
+    </div>
+</body>
+</html>
