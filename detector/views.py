@@ -10,7 +10,7 @@ import os
 import pygame
 
 # Load YOLO model
-model = YOLO("best3.pt")
+model = YOLO("best6.pt")
 
 # Initialize pygame mixer once
 pygame.mixer.init()
